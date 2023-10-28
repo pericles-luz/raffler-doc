@@ -79,7 +79,7 @@ POST /raffles/:id/register
 ### Ver amigo oculto
 
 ```
-GET /raffles/:id/see
+GET /raffles/participants/:id/see
 ```
 
 #### Resposta
@@ -117,13 +117,44 @@ GET /raffles/:id/seen
     "message": "participantes que já viram seus amigos ocultos",
     "data": [
         {
+            "id": "5a6a0b4c-2a6f-4602-9176-79ee4e5e3059",
             "name": "Fulano",
+            "participate": true,
             "seen": true
         },
         {
+            "id": "5a6a0b4c-2a6f-4602-9176-79ee4e5e3059",
             "name": "Ciclano",
+            "participate": true,
             "seen": false
         }
     ]
+}
+```
+
+### Definir se o participante será sorteado ou não
+
+```
+PUT /raffles/participants/:id/participate
+```
+
+#### Payload
+
+```json
+{
+  "participate": true
+}
+```
+
+#### Resposta
+
+```json
+{
+    "message": "participante atualizado com sucesso",
+    "data": {
+        "id": "5a6a0b4c-2a6f-4602-9176-79ee4e5e3059",
+        "name": "Fulano",
+        "participate": true
+    }
 }
 ```
