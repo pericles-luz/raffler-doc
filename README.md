@@ -44,8 +44,8 @@ POST /raffles
   "message": "sorteio registrado com sucesso. Agora encaminhe o link abaixo para os participantes se cadastrarem",
   "data": {
       "id": "139a8846c-2a6f-4602-9176-79ee4e5e3059",
-      "register_link": "http://localhost:3000/raffles/139a8846c-2a6f-4602-9176-79ee4e5e3059/register",
-      "admin_link": "http://localhost:3000/raffles/139a8846c-2a6f-4602-9176-79ee4e5e3059/admin"
+      "register_link": "/raffles/139a8846c-2a6f-4602-9176-79ee4e5e3059/register",
+      "draw_link": "/raffles/139a8846c-2a6f-4602-9176-79ee4e5e3059/draw"
   }
 }
 ```
@@ -79,7 +79,7 @@ POST /raffles/:id/register
 ### Ver amigo oculto
 
 ```
-GET /raffles/participants/:id/see
+PUT /participants/:id/see
 ```
 
 #### Resposta
@@ -93,7 +93,7 @@ GET /raffles/participants/:id/see
 ### Sortear
 
 ```
-POST /raffles/:id/draw
+PUT /raffles/:id/draw
 ```
 
 #### Resposta
@@ -104,38 +104,10 @@ POST /raffles/:id/draw
 }
 ```
 
-### Ver participantes que já viram seus amigos ocultos
-
-```
-GET /raffles/:id/seen
-```
-
-#### Resposta
-
-```json
-{
-    "message": "participantes que já viram seus amigos ocultos",
-    "data": [
-        {
-            "id": "5a6a0b4c-2a6f-4602-9176-79ee4e5e3059",
-            "name": "Fulano",
-            "participate": true,
-            "seen": true
-        },
-        {
-            "id": "5a6a0b4c-2a6f-4602-9176-79ee4e5e3059",
-            "name": "Ciclano",
-            "participate": true,
-            "seen": false
-        }
-    ]
-}
-```
-
 ### Definir se o participante será sorteado ou não
 
 ```
-PUT /raffles/participants/:id/participate
+PUT /raffles/{raffleID}/participants/{id}/participation
 ```
 
 #### Payload
@@ -150,11 +122,6 @@ PUT /raffles/participants/:id/participate
 
 ```json
 {
-    "message": "participante atualizado com sucesso",
-    "data": {
-        "id": "5a6a0b4c-2a6f-4602-9176-79ee4e5e3059",
-        "name": "Fulano",
-        "participate": true
-    }
+    "message": "participação atualizado com sucesso"
 }
 ```
