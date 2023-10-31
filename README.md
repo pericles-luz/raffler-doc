@@ -125,3 +125,31 @@ PUT /raffles/{raffleID}/participants/{id}/participation
     "message": "participação atualizado com sucesso"
 }
 ```
+
+### Buscar sorteio pelo ID
+
+```
+GET /raffles/{id}
+```
+
+```json
+{
+  "data": {
+    "id": "139a8846c-2a6f-4602-9176-79ee4e5e3059",
+    "name": "Nome do sorteio",
+    "participants": [
+      {
+        "id": "5a6a0b4c-2a6f-4602-9176-79ee4e5e3059",
+        "name": "Nome do participante",
+        "participate": true,
+        "seen": true,
+      }
+      {
+        "id": "5a6a0b4c-2a6f-4602-9176-79ee4e5f3058",
+        "name": "Nome do participante dois",
+        "participate": true,
+        "seen": false,
+      }
+    ]
+  }
+}
